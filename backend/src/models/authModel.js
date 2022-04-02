@@ -14,7 +14,7 @@ const authSchema = mongoose.Schema({
         minLength: [7, "Password must be greater then 6 Characters."],
         trim: true,
     },
-    FullName:{
+    fullName:{
         type : String,
         trim : true,
         lowercase : true,
@@ -49,6 +49,6 @@ authSchema.methods.generateToken = async function (next) {
     }
 }
 const Auth = mongoose.model('Auth', authSchema);
-Auth.create({ email: "jhon@gmail.com", password: "jhon12345", stack: "node" })
+//  Auth.create({ email: "jhon@gmail.com", password: "jhon12345", stack: "node",fullName: "Saurav AMhawer" })
 
 module.exports = Auth;
