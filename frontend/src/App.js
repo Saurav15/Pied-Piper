@@ -3,6 +3,7 @@ import SignIn from "./components/signin";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import PrivateRoute from "./routes/PrivateRoute";
 import Index from "./components/dashboard";
+import ProjectDetails from "./components/project-details";
 function App() {
   return (
     // <div>
@@ -20,6 +21,7 @@ function App() {
         /> */}
           <Route element={<PrivateRoute />}></Route>
           <Route path="/dashboard" element={<Index />} />
+          <Route path="/project-details" element={<ProjectDetails />} />
         </Routes>
       </div>
     </Router>
