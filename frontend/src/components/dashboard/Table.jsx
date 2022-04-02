@@ -15,28 +15,6 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 import axios from "axios";
 
-function createData(name, calories, fat, carbs, protein, price) {
-  return {
-    name,
-    calories,
-    fat,
-    carbs,
-    protein,
-    price,
-    history: [
-      {
-        language: "JavaScript",
-        customerId: "11091700",
-        level: "Beginner",
-      },
-      {
-        language: "React",
-        customerId: "Anonymous",
-        level: "Beginner",
-      },
-    ],
-  };
-}
 const baseUrl = "https://6555-14-99-102-226.ngrok.io/api/developers";
 function Row(props) {
   const [level, setLevel] = React.useState("");

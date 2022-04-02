@@ -1,0 +1,57 @@
+body.employee-page {
+    min-height: 100vh;
+    background-color: #eee !important;
+    background-image: url("./../../assests/images/login.webp");
+    background-size: cover;
+    background-position: center;
+}
+body.employee-page .app-container{
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    flex-wrap: wrap;    
+    padding: 5rem 20px;
+}
+body.employee-page .app-container .EmployeeBox{
+    border-radius: 15px ;
+    max-width: 340px;
+    padding: 40px 30px;
+}
+
+.error_message {
+    font-size: 11px;
+    color: red;
+    font-weight: bold;
+    padding-left:5px;
+    margin-top: 2px;
+}
+
+.EmployeeBox .form-group{
+    position: relative;
+    margin-bottom: 20px;
+}
+.EmployeeBox .employee-btn{
+    width: 25%;
+    margin-bottom: 0;
+    padding: 8px 5px;
+    line-height: normal;
+    border-radius: 5px;
+    font-size: 15px;
+    margin: 10px;
+}
+.EmployeeBox .form-group .fas{ 
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    line-height: 40px;
+    width: 36px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.EmployeeBox .form-group .form-control{
+    height: 40px;
+    padding: 0 10px 0 36px;
+    border-radius: 8px;
+}
