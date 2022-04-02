@@ -7,7 +7,7 @@ import { SignUpSchema } from "../../validation/AddUserSchema";
 const AddEmployee = () => {
   return (
     <>
-    <Header />
+ 
       <div className="container ">
         <div className="mt-5 ml-5 pl-3 bg-grey font-weight-bold mt-2 p-3">
           <Formik
