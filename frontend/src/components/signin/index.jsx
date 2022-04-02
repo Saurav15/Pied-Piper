@@ -12,10 +12,15 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Form } from "react-bootstrap";
 import { Field, Formik } from "formik";
 import { SignInSchema } from "../../validation/SigninSchema";
-
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/userReducer";
+import { useNavigate } from "react-router-dom";
 const theme = createTheme();
 
 export default function SignIn() {
+
+    const dispatch=useDispatch()
+    const navigate=useNavigate()
   return (
     <ThemeProvider theme={theme}>
       <Container
@@ -52,8 +57,11 @@ export default function SignIn() {
                 values.email === "hhh@gmail.com" &&
                 values.password === "123456"
               ) {
-                // navigate("/home");
+                dispatch(login(true))
+                navigate("/dashboard");
+                
                 alert("Login Successful");
+
               } else {
                 alert("Please Enter Valid Email and Password");
               }
@@ -104,4 +112,4 @@ export default function SignIn() {
       </Container>
     </ThemeProvider>
   );
-}
+            }

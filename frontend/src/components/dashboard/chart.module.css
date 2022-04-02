@@ -1,0 +1,21 @@
+.custom-card {
+  margin-top: 10px;
+  padding: 25px;
+  margin-left: 30px;
+  width: 280px;
+  height: 250px;
+  box-shadow: 5px 5px 10px -5px rgb(0 0 0 / 25%);
+  border-radius: 15px;
+  background-color: white;
+  justify-items: center;
+}
+.cards-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.profile_name {
+  font-size: 18px;
+  font-weight: 700;
+}
