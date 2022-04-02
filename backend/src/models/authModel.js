@@ -14,6 +14,18 @@ const authSchema = mongoose.Schema({
         minLength: [7, "Password must be greater then 6 Characters."],
         trim: true,
     },
+    FullName:{
+        type : String,
+        trim : true,
+        lowercase : true,
+        required : true
+    },
+    designation:{
+        type : String,
+        trim : true,
+        enum : ['Team Manager', 'Engineer Manager'],
+        default : "Team Manager"
+    },
     role: {
         type: String,
         enum: ['USER', 'ADMIN', 'SUPERUSER'],
