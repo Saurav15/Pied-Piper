@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -13,10 +12,8 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
+
+import axios from "axios";
 
 function createData(name, calories, fat, carbs, protein, price) {
   return {
@@ -40,10 +37,9 @@ function createData(name, calories, fat, carbs, protein, price) {
     ],
   };
 }
-
+const baseUrl = "https://6555-14-99-102-226.ngrok.io/api/developers";
 function Row(props) {
   const [level, setLevel] = React.useState("");
-
   const handleChange = (event) => {
     setLevel(event.target.value);
   };
@@ -65,49 +61,48 @@ function Row(props) {
         <TableCell component="th" scope="row">
           {row.name}
         </TableCell>
-        <TableCell align="right">{row.calories}</TableCell>
-        <TableCell align="right">{row.fat}</TableCell>
-        <TableCell align="right">{row.carbs}</TableCell>
+        <TableCell align="right" className="text-capitalize">
+          {row.stack}
+        </TableCell>
+        <TableCell align="right">{row.experience}</TableCell>
+        <TableCell align="right" className="text-capitalize">
+          {row.projectStatus}
+        </TableCell>
         <TableCell align="right">{row.protein}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
+              <Typography
+                variant="h6"
+                className="font-weight-bold"
+                gutterBottom
+                component="div"
+              >
                 Skills
               </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Langiuages</TableCell>
-                    <TableCell>Skill Metrics</TableCell>
+                    <TableCell className="font-weight-bold">Name</TableCell>
+                    <TableCell className="font-weight-bold">
+                      Skill Metrics
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.history.map((historyRow) => (
-                    <TableRow key={historyRow.date}>
-                      <TableCell component="th" scope="row">
-                        {historyRow.language}
+                  {row.skills.map((el) => (
+                    <TableRow key={el._id}>
+                      <TableCell
+                        component="th"
+                        className="text-capitalize"
+                        scope="row"
+                      >
+                        {el.name}
                       </TableCell>
-                      <TableCell>
-                        <FormControl fullWidth>
-                          <InputLabel id="demo-simple-select-label">
-                            Level
-                          </InputLabel>
-                          <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={level}
-                            className="col-md-5"
-                            label="Age"
-                            onChange={handleChange}
-                          >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                          </Select>
-                        </FormControl>
+                      <TableCell className="text-capitalize">
+                        {el.level}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -121,33 +116,29 @@ function Row(props) {
   );
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
+function CollapsibleTable() {
+  const [error, setError] = React.useState(null);
+  const [isLoaded, setIsLoaded] = React.useState(false);
+  const [items, setItems] = React.useState([]);
+  //getting tasks
+  React.useEffect(() => {
+    axios
+      .get(baseUrl)
+      .then(function (response) {
+        // handle success
+        setIsLoaded(true);
+        setItems(response.data);
       })
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
+      .catch(function (error) {
+        // handle error
+        setIsLoaded(true);
+        setError(error);
+      });
 
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0, 3.99),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3, 4.99),
-  createData("Eclair", 262, 16.0, 24, 6.0, 3.79),
-  createData("Cupcake", 305, 3.7, 67, 4.3, 2.5),
-  createData("Gingerbread", 356, 16.0, 49, 3.9, 1.5),
-];
-
- function CollapsibleTable() {
+    return () => {
+      setItems([]);
+    };
+  }, []);
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -162,7 +153,7 @@ const rows = [
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {items.map((row) => (
             <Row key={row.name} row={row} />
           ))}
         </TableBody>

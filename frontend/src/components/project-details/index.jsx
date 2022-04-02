@@ -109,8 +109,7 @@ function ProjectDetails({ setLogin }) {
                   <div className="row">
                     <div className="col col-md-4">
                       {" "}
-                      <div className="useritem ">Aditya Shah</div>
-                    </div>
+                      <div className="useritem ">Aditya Shah</div> </div>
                     <div className="col col-md-4">Hardik Sorathiya</div>
                   </div>
                 </div>
