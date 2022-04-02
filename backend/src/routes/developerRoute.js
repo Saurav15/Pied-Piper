@@ -1,8 +1,9 @@
-const express = require("express")
-const router = express.Router()
-const {getDevelopers} = require('../controllers/developerController');
+const express = require("express");
+const { getDevelopers } = require("../controllers/developerController");
+const userAuth = require("../middlewares/userAuth");
+const adminAuth = require("../middlewares/adminAuth");
 
-router.get("/developers", getDevelopers);
-
+const router = express.Router();
+router.get("/developers", userAuth, getDevelopers);
 
 module.exports = router;
