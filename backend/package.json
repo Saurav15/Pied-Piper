@@ -1,0 +1,33 @@
+{
+  "name": "pied-piper",
+  "version": "1.0.0",
+  "description": "Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r dotenv/config src/server.js dotenv_config_path=./.env"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saurav15/Pied-Piper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Saurav15/Pied-Piper/issues"
+  },
+  "homepage": "https://github.com/Saurav15/Pied-Piper#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^7.6.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.9"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
