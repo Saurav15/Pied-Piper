@@ -1,5 +1,6 @@
 const Developer = require("../models/developerModel")
 
+// read data
 const getDevelopers = async (req,res) => {
     try {
         const developers = await Developer.find();
@@ -9,6 +10,13 @@ const getDevelopers = async (req,res) => {
         res.status(500).json({error : "Internal server Error"});
     }
 }
+
+// Update data
+
+// Delete Data
+
+// Create Data 
+
 
 module.exports = {
     getDevelopers
