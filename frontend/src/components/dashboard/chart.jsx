@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { PieChart } from "react-minimal-pie-chart";
 import css from "./chart.module.css";
 import Table from "./Table";
@@ -23,6 +24,14 @@ const Chart = () => (
     </div>
     <div className="container mt-3">
       <Table />
+    </div>
+    <div className="container mt-3">
+      <Link
+        to="/addEmployee"
+        class={`btn btn-sm p-2 ${css["custom-add-developer-btn"]}`}
+      >
+        <i class="fa fa-user" aria-hidden="true"></i> Add Employee
+      </Link>
     </div>
   </>
 );

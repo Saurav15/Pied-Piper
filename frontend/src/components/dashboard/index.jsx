@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../header/index";
 import Chart from "./chart";
 
-function Index() {
+function Dashboard() {
   return (
     <>
       <Header />
@@ -11,4 +11,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default Dashboard;
