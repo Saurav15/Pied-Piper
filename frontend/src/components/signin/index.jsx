@@ -21,11 +21,8 @@ const theme = createTheme();
 export default function SignIn() {
   React.useEffect(() => {
     // Body Class for Page
-
     const body = document.querySelector("body");
-
     document.body.classList.add("login-page");
-
     return () => {
       body.classList.remove("login-page");
     };

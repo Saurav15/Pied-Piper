@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../Footer";
 import Header from "../header/index";
 import Chart from "./chart";
 
@@ -7,6 +8,7 @@ function Dashboard() {
     <>
       <Header />
       <Chart />
+      <Footer />
     </>
   );
 }

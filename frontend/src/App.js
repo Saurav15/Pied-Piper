@@ -6,6 +6,9 @@ import AddEployee from "./components/addEmployee";
 import ProjectDetailsPage from "./components/project-details";
 import Dashboard from "./components/dashboard";
 import AddEmployee from "./components/addEmployee";
+import MainEntry from "./components/MainEntryPoint/MainEntry";
+import EmployeeProfile from "./components/EmployeeProfile";
+import TeamLeaderProfile from "./components/TeamleaderProfile";
 function App() {
   return (
     // <div>
@@ -25,7 +28,12 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/project-details" element={<ProjectDetailsPage />} />
           <Route path="/addEmployee" element={<AddEmployee />} />
+          <Route path="/employeeProfile" element={<EmployeeProfile />} />
+          <Route path="/teamleaderProfile" element={<TeamLeaderProfile />} />
         </Routes>
+        {/* <Routes>
+          <Route path="/" element={<SignIn />} />{" "}
+        </Routes> */}
       </div>
     </Router>
   );
