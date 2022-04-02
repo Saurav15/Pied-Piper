@@ -1,0 +1,79 @@
+body.login-page {
+    min-height: 100vh;
+    background-color: #eee !important;
+    background-image: url("./../../assests/images/login.webp");
+    background-size: cover;
+    background-position: center;
+}
+body.login-page .app-container{
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+    flex-wrap: wrap;    padding: 5rem 20px;
+}
+.login-main{
+    width: 100%;
+  
+}
+body.login-page .app-container .loginBox{
+    border-radius: 15px ;
+    max-width: 340px;
+    padding: 40px 30px;
+}
+.loginBox .MuiBox-root{
+    margin-top: 0px;
+}
+
+.error_message {
+    font-size: 11px;
+    color: red;
+    font-weight: bold;
+    padding-left:5px;
+    margin-top: 2px;
+}
+.loginBox h1{
+    font-weight: 700;
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+.logo-wrap{
+    width: 100%;
+    text-align: center;
+}
+.logo-wrap .logo{
+    width: 250px;
+    margin-bottom: 40px;
+}
+
+.loginBox form{
+    width: 100%;
+}
+.loginBox .form-group{
+    position: relative;
+    margin-bottom: 20px;
+}
+.loginBox .signin-btn{
+    width: 100%;
+    margin-bottom: 0;
+    padding: 15px;
+    line-height: normal;
+    border-radius: 50px;
+    font-size: 16px;
+}
+.loginBox .form-group .fas{ 
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    line-height: 40px;
+    width: 36px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.loginBox .form-group .form-control{
+    height: 40px;
+    padding: 0 10px 0 36px;
+    border-radius: 8px;
+}
