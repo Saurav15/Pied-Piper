@@ -1,26 +1,16 @@
-import { Link } from "react-router-dom";
-import { PieChart } from "react-minimal-pie-chart";
-import css from "./chart.module.css";
+import Dashboard from "../../asset/Dashboard.webp";
 const Chart = () => (
   <>
     <div className="container">
-      <div className={css["cards-div"]}>
-        <div className={css["custom-card"]} style={{ color: "white " }}>
-          <PieChart
-            label={({ dataEntry }) => `${Math.round(dataEntry.percentage)}%`}
-            data={[
-              { title: "One", value: 20, color: "lightblue" },
-              { title: "Two", value: 15, color: "orange" },
-              { title: "Three", value: 20, color: "lightgreen" },
-            ]}
-          />
-        </div>
-        <div className={css["custom-card"]}>
-          <div className={css["profile_name"]}>Employee numbers:</div>
-        </div>
-        <div className={css["custom-card"]}>
-          <div className={css["profile_name"]}>Available Employees:</div>
-        </div>
+      <div className="d-flex align-items-center justify-content-center">
+        <img src={Dashboard} alt="" className="w-50" />
+      </div>
+      <div className="text-center pb-5">
+        <h3 style={{ color: "#0c4c67" }}>Management Simplify</h3>
+
+        <h6 style={{ color: "#00A0E2" }}>
+          Administration between team mambers and projects made easier.{" "}
+        </h6>
       </div>
     </div>
   </>
