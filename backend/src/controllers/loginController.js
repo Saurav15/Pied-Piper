@@ -1,6 +1,6 @@
 const Auth = require("../models/authModel");
 const login = async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password } = req.body.values;
 
   try {
     if (!email || !password) {
@@ -12,14 +12,12 @@ const login = async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
 
-    if (existingUser && password === existingUser.password) {
-      const token = await existingUser.generateToken();
-      res.cookie("jwttoken", token, {
-        secure: process.env.NODE_ENV === "production",
-        httpOnly: true,
-        maxAge: 86400,
-      });
-      return res.status(200).send({ msg: "Login successfull", token });
+    if (existingUser && (password === existingUser.password)) {
+      let token = await existingUser.generateToken();
+      token = `Bearer ${token}`
+      
+      return res.status(200).json({existingUser,token});
+      // return res.send('asdif')
     }
     return res.status(401).send({ error: "Email or Password is invalid" });
   } catch (error) {

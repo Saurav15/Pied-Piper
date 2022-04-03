@@ -3,14 +3,12 @@ const Auth = require("../models/authModel");
 
 const userAuth = async (req, res, next) => {
   try {
-    if (!req.cookies && !req.cookies.jwttoken) {
-      return res.status(400).json({ error: "can not authenticate user" });
-    }
-    const token = req.cookies.jwttoken;
-    const decode = jwt.verify(token, process.env.JWT_SECRET);
+    const recievedToken = req.body.headers["Authorization"]
+    const token = recievedToken.replace("Bearer ", "");
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     const user = await Auth.findOne(
-      { _id: decode._id, role: decode.role },
+      { _id: decoded._id, role: decoded.role },
       { password: 0 }
     );
     if (!user) {
@@ -18,6 +16,7 @@ const userAuth = async (req, res, next) => {
     }
     req.user = user;
     req.token = token;
+
     next();
   } catch (error) {
     return res.status(401).send({ error: "please authenticate." });
