@@ -5,7 +5,13 @@ import "./TeamLeader.css";
 function TeamLeaderProfile() {
   return (
     <ProfileCard>
-      <img className="custom-margin" height={60} width={60} src={Avatar} alt="No preview available" />
+      <img
+        className="custom-margin"
+        height={60}
+        width={60}
+        src={Avatar}
+        alt="No preview available"
+      />
       <h5 className="custom-margin">Name</h5>
       <h6 className="custom-margin">E-mail</h6>
       <div className="custom-margin card d-flex flex-wrap w-200">

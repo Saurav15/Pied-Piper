@@ -12,8 +12,6 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import AddBoxIcon from "@mui/icons-material/AddBox";
-
 import axios from "axios";
 
 const baseUrl = "https://piedpipers.herokuapp.com/api/developers";
@@ -47,9 +45,11 @@ function Row(props) {
         <TableCell align="right" className="text-capitalize">
           {row.projectStatus}
         </TableCell>
-        <TableCell align="right">{row.protein}</TableCell>
         <TableCell>
-          <AddBoxIcon />
+          <i class="fas fa-edit"></i>
+        </TableCell>
+        <TableCell>
+          <i class="fas fa-trash"></i>
         </TableCell>
       </TableRow>
       <TableRow>
@@ -131,7 +131,6 @@ function CollapsibleTable() {
             <TableCell align="right">Stack</TableCell>
             <TableCell align="right">Experience (in years)</TableCell>
             <TableCell align="right">Assigned to project</TableCell>
-            <TableCell align="right">Availability</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

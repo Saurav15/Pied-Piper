@@ -4,8 +4,9 @@ import { Button, Container, Form } from "react-bootstrap";
 import Header from "../header/index";
 import { SignUpSchema } from "../../validation/AddUserSchema";
 import "./addEmployee.css";
-import Footer from "../Footer";
+import axios from "axios";
 
+const baseUrl = "https://piedpipers.herokuapp.com/api/developer";
 const AddEmployee = () => {
   return (
     <>
@@ -27,19 +28,12 @@ const AddEmployee = () => {
               }}
               validationSchema={SignUpSchema}
               onSubmit={(values) => {
-                console.log(values);
-                // dispatch(
-                //     updateVal({
-                //         name: 'pied',
-                //         email: 'pied@gmail.com',
-                //         number: '4988560030',
-                //         address: 'Ahmedabad',
-                //     }),
-                // );
-                // navigate('/signin'),
-                //     dispatch(() => {
-                //         login(true);
-                //     });
+                try {
+                  console.log(values);
+                  axios.post(baseUrl, { values });
+                } catch (error) {
+                  console.log("Error...");
+                }
               }}
             >
               {({ handleSubmit, setFieldValue, errors, touched }) => {
@@ -118,7 +112,6 @@ const AddEmployee = () => {
             </Formik>
           </Container>
         </div>
-        <Footer />
       </div>
     </>
   );
