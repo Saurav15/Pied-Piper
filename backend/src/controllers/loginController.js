@@ -19,7 +19,7 @@ const login = async (req, res) => {
         httpOnly: true,
         maxAge: 86400,
       });
-      return res.status(200).send({ msg: "Login successfull", token });
+      return res.status(200).send({ user: existingUser });
     }
     return res.status(401).send({ error: "Email or Password is invalid" });
   } catch (error) {

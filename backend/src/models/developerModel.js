@@ -4,12 +4,10 @@ const developerSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
       trim: true,
     },
     stack: {
       type: String,
-      required: true,
       trim: true,
       lowercase: true,
     },
@@ -22,7 +20,7 @@ const developerSchema = mongoose.Schema(
         },
         level: {
           type: String,
-          enum: ['beginner','intermediate','advance'],
+          enum: ["beginner", "intermediate", "advance"],
           trim: true,
           lowercase: true,
           default: null,
@@ -32,22 +30,30 @@ const developerSchema = mongoose.Schema(
     projectStatus: {
       type: String,
       enum: ["assigned", "partiallyAssigned", "free"],
-      required: true,
       trim: true,
     },
     email: {
       type: String,
-      required: true,
       unique: true,
+      require: true,
     },
+    password: {
+      type: String,
+      trim: true,
+      minLength: [8, "password must be at least 8 characters"],
+      require: true,
+    },
+    assignedProjects: [
+      {
+        type: String,
+      },
+    ],
     experience: {
       type: Number,
-      required: true,
     },
     isDeleted: {
       type: Boolean,
       default: false,
-      required: true,
     },
   },
   {
@@ -55,7 +61,13 @@ const developerSchema = mongoose.Schema(
   }
 );
 
-const Developer = mongoose.model("Developer", developerSchema);
+developerSchema.methods.toJSON = function () {
+  const developerObject = this.toObject();
+  delete developerObject.password;
+  delete developerObject.isDeleted;
+  return developerObject;
+};
 
+const Developer = mongoose.model("Developer", developerSchema);
 
 module.exports = Developer;
