@@ -100,7 +100,11 @@ const AddEmployee = () => {
                       </div>
                     </div>
                     <div className="d-flex mb-3 justify-content-center">
-                      <Button className="employee-btn" type="submit">
+                      <Button
+                        className="employee-btn"
+                        style={{ backgroundColor: "#00A0E2" }}
+                        type="submit"
+                      >
                         Submit
                       </Button>
                       <Button className="employee-btn btn-danger" type="reset">

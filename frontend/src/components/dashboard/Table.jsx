@@ -12,10 +12,11 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import AddBoxIcon from "@mui/icons-material/AddBox";
 
 import axios from "axios";
 
-const baseUrl = "https://6555-14-99-102-226.ngrok.io/api/developers";
+const baseUrl = "https://piedpipers.herokuapp.com/api/developers";
 function Row(props) {
   const [level, setLevel] = React.useState("");
   const handleChange = (event) => {
@@ -47,6 +48,9 @@ function Row(props) {
           {row.projectStatus}
         </TableCell>
         <TableCell align="right">{row.protein}</TableCell>
+        <TableCell>
+          <AddBoxIcon />
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
