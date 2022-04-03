@@ -25,8 +25,6 @@ function ProjectDetails({ setLogin }) {
   };
 
   const validationSchema = Yup.object({
-    projectName: Yup.string().required("Required"),
-    projectAbstract: Yup.string().required("Required"),
     startingDate: Yup.string().required("Required"),
     duration: Yup.string().required("Required"),
   });
@@ -113,7 +111,8 @@ function ProjectDetails({ setLogin }) {
                   <div className="row">
                     <div className="col col-md-4">
                       {" "}
-                      <div className="useritem ">Aditya Shah</div> </div>
+                      <div className="useritem ">Aditya Shah</div>{" "}
+                    </div>
                     <div className="col col-md-4">Hardik Sorathiya</div>
                   </div>
                 </div>
