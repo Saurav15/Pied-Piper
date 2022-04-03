@@ -6,7 +6,8 @@ import { SignUpSchema } from "../../validation/AddUserSchema";
 import "./addEmployee.css";
 import axios from "axios";
 
-const baseUrl = "https://cf70-14-99-102-226.ngrok.io/developer";
+const baseUrl =
+  "http://piedpipers-lb-480452186.us-east-1.elb.amazonaws.com/developer";
 const AddEmployee = () => {
   return (
     <>
