@@ -78,13 +78,33 @@ function AddSkills({ setLogin }) {
                   <div className="card p-3 mb-2">
                     <h5>Skills:</h5>
 
-                    <div className="row">
-                      {/* <div className="col col-md-4">
-                        {" "}
-                        <div className="useritem ">Aditya Shah</div>{" "}
-                      </div>
-                      <div className="col col-md-4">Hardik Sorathiya</div> */}
+                    <div className="d-flex flex-column">
+                      {/* <label htmlFor="skills">Skills:</label> */}
+                      <br />
+                      <Field
+                        as="select"
+                        id="Skills"
+                        name="Skills"
+                        className="form-control"
+                      >
+                        <option value="angularJs" label="angularJs">
+                          Angular js
+                        </option>
+                        <option value="vueJs" label="vueJs">
+                          Vue js
+                        </option>
+                        <option value="reactJs" label="reactJs">
+                          React js
+                        </option>
+                      </Field>
+                      <ErrorMessage
+                        name="Skills"
+                        render={(msg) => (
+                          <div className={css["error"]}>{msg}</div>
+                        )}
+                      />
                     </div>
+
                     <div className="d-flex flex-column">
                       <label htmlFor="Name">Proficiency:</label>
                       <br />
