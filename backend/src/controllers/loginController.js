@@ -1,7 +1,9 @@
-const Auth = require("../models/authModel");
+import Auth from "../models/authModel.js";
 const login = async (req, res) => {
   const { email, password } = req.body.values;
 
+  /* check for valid credentials */
+  
   try {
     if (!email || !password) {
       return res.status(400).json({ error: "Please enter valid credentials" });
@@ -26,6 +28,4 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = {
-  login,
-};
+export default login;

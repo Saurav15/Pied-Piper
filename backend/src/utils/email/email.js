@@ -1,5 +1,6 @@
-const sgMail = require("@sendgrid/mail");
+import sgMail from "@sendgrid/mail";
 
+/* sendgrid config */
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 const generateMsg = (members, subject, text, html) => {
@@ -12,6 +13,8 @@ const generateMsg = (members, subject, text, html) => {
   };
 };
 
+
+/* sending mail */
 const sendMailToAllMembers = async (
   members,
   assignedBy,
@@ -46,7 +49,7 @@ const sendInvitationMailToMember = async (
   }
 };
 
-module.exports = {
+export {
   sendMailToAllMembers,
   sendInvitationMailToMember,
 };

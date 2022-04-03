@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
+import mongoose from "mongoose";
+import jwt  from "jsonwebtoken";
 
 const authSchema = mongoose.Schema({
   email: {
@@ -57,4 +57,4 @@ authSchema.methods.generateToken = async function (next) {
 };
 const Auth = mongoose.model("Auth", authSchema);
 
-module.exports = Auth;
+export default Auth;

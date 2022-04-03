@@ -1,7 +1,7 @@
-const Developer = require("../models/developerModel");
-const { sendInvitationMailToMember } = require("../utils/email/email");
+import Developer from "../models/developerModel.js";
+import { sendInvitationMailToMember } from "../utils/email/email.js";
 
-// read data
+/*  read data */
 const getDevelopers = async (req, res) => {
     const params = req.body.param;
     console.log(Object.keys(params).length === 0)
@@ -65,7 +65,7 @@ const getDevelopers = async (req, res) => {
   }
 };
 
-// Create Data
+/* Create Data */
 const createDeveloper = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
@@ -88,7 +88,7 @@ const createDeveloper = async (req, res) => {
   }
 };
 
-//add developer profile data
+/*add developer profile data */
 const addDeveloperProfileData = async (req, res) => {
   try {
     const allowedUpdates = {
@@ -122,7 +122,7 @@ const addDeveloperProfileData = async (req, res) => {
   }
 };
 
-// Update data
+/* Update data */
 // const updateDeveloper = async (req, res) => {
 //   const skill = req.body.skill;
 //   delete req.body.skill;
@@ -143,7 +143,7 @@ const addDeveloperProfileData = async (req, res) => {
 //   }
 // };
 
-// Delete Data
+/* Delete Data */
 const deleteDeveloper = async (req, res) => {
   const id = req.params.id;
   try {
@@ -160,7 +160,7 @@ const deleteDeveloper = async (req, res) => {
     res.status(400).send(e.message);
   }
 };
-module.exports = {
+export  {
   getDevelopers,
   deleteDeveloper,
   createDeveloper,

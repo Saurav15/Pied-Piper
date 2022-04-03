@@ -1,15 +1,15 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 
 const Role = {
   ADMIN: "ADMIN",
   SUPERADMIN: "SUPERADMIN",
 };
 
-//hard delete ans soft delete
+/* authenticate if its admin or not */
 
 const adminAuth = (req, res, next) => {
   const user = req.user;
-  const decoded = jwt.verify(req.token, process.env.JWT_SECRET);
+  const decoded =jwt.verify(req.token, process.env.JWT_SECRET);
 
   if (Role[user.role] && Role[decoded.role] && user.role === decoded.role) {
     next();
@@ -20,4 +20,4 @@ const adminAuth = (req, res, next) => {
     .json({ error: "You are not authorized to access this." });
 };
 
-module.exports = adminAuth;
+export default adminAuth;

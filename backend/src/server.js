@@ -1,22 +1,25 @@
-const express = require("express");
-const app = express();
-const path = require("path");
-require("./config/dbConfig");
-const cookieParser = require("cookie-parser");
-const loginRoute = require("./routes/loginRoute");
-const developerRoute = require("./routes/developerRoute");
-const projectRoute = require("./routes/projectRoute");
-const cors = require("cors");
+/* All imports  */
+import express, { json } from "express";
+import path from "path";
+import loginRoute from "./routes/loginRoute.js";
+import developerRoute from "./routes/developerRoute.js";
+import projectRoute from "./routes/projectRoute.js";
+import dbConnect from "./config/dbConfig.js";
+import cors from "cors";
 
+/*  express config */
+const app = express();
+dbConnect()
 app.use(cors());
-app.use(express.json());
-app.use(cookieParser());
+app.use(json());
 app.use("/api", loginRoute);
 app.use("/api", developerRoute);
 app.use("/api", projectRoute);
 app.get("/", (req, res) => {
   res.status(200).send("ok");
 });
+
+/*  start server */
 const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Server started at ${port}`);

@@ -1,7 +1,7 @@
-const Project = require("../models/projectModel");
-const Developer = require("../models/developerModel");
-const mongoose = require("mongoose");
+import Project from "../models/projectModel.js";
+import Developer from "../models/developerModel.js";
 
+/*  add user  in project */
 const createUser = async (req, res) => {
   const { selectedCandidates } = req.body;
 
@@ -44,18 +44,22 @@ const createUser = async (req, res) => {
   }
 };
 
+/*  read data of project */
+
 const readProject = async (req, res) => {
   try {
-    const getProject = await Project.find({ projectManager: req.user._id });
+    const getProject = await Developer.find({ projectManager: req.user._id });
     return res.status(200).json(getProject);
   } catch (error) {
     return res.status(500).json({ error: "Something went wrong" });
   }
 };
 
+/* delete project  */
+
 const deleteProject = async (req, res) => {
   try {
-    const deleteProject = await Project.findOneAndDelete({
+    const deleteProject = await Developer.findOneAndDelete({
       _id: req.params.id,
       projectManager: req.user._id,
     });
@@ -64,4 +68,4 @@ const deleteProject = async (req, res) => {
     return res.status(500).json({ error: "Something went wrong" });
   }
 };
-module.exports = { createUser, readProject, deleteProject };
+export  { createUser, readProject, deleteProject };

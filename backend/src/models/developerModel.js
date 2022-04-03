@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const developerSchema = mongoose.Schema(
   {
@@ -70,4 +70,4 @@ developerSchema.methods.toJSON = function () {
 
 const Developer = mongoose.model("Developer", developerSchema);
 
-module.exports = Developer;
+export default Developer;
