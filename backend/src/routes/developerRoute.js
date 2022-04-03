@@ -1,9 +1,14 @@
-const express = require("express");
-const { getDevelopers } = require("../controllers/developerController");
-const userAuth = require("../middlewares/userAuth");
-const adminAuth = require("../middlewares/adminAuth");
+const express = require("express")
+const router = express.Router()
+const {getDevelopers,createDeveloper,updateDeveloper,deleteDeveloper} = require('../controllers/developerController');
 
-const router = express.Router();
-router.get("/developers", userAuth, getDevelopers);
+router.get("/developers", getDevelopers);
+
+router.post("/developer", createDeveloper);
+
+router.patch("/developer/:id",updateDeveloper);
+
+router.delete("/developer/:id", deleteDeveloper);
+
 
 module.exports = router;
