@@ -12,14 +12,11 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import TemporaryDrawer from "../Filterdrawer";
 import axios from "axios";
 
-const baseUrl = "https://piedpipers.herokuapp.com/api/developers";
+const baseUrl = "http://e8b4-14-99-102-226.ngrok.io/api/developers";
 function Row(props) {
-  const [level, setLevel] = React.useState("");
-  const handleChange = (event) => {
-    setLevel(event.target.value);
-  };
   const { row } = props;
   const [open, setOpen] = React.useState(false);
 
@@ -102,10 +99,12 @@ function CollapsibleTable() {
   const [error, setError] = React.useState(null);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [items, setItems] = React.useState([]);
-  //getting tasks
   React.useEffect(() => {
     axios
-      .get(baseUrl)
+      .post(baseUrl, {
+        headers: { Authorization: localStorage.getItem("token") },
+        param: {},
+      })
       .then(function (response) {
         // handle success
         setIsLoaded(true);
@@ -121,25 +120,51 @@ function CollapsibleTable() {
       setItems([]);
     };
   }, []);
+  const handleFilter = (filter) => {
+    console.log(filter);
+    axios
+      .post(baseUrl, {
+        headers: { Authorization: localStorage.getItem("token") },
+        param: { filter },
+      })
+      .then(function (response) {
+        // handle success
+        setIsLoaded(true);
+        setItems(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        setIsLoaded(true);
+        setError(error);
+      });
+  };
   return (
-    <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Developer Name</TableCell>
-            <TableCell align="right">Stack</TableCell>
-            <TableCell align="right">Experience (in years)</TableCell>
-            <TableCell align="right">Assigned to project</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {items.map((row) => (
-            <Row key={row.name} row={row} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <>
+      <div className="d-flex justify-content-between">
+        <h3>Developer's List</h3>
+        <div className="d-flex align-items-end">
+          <TemporaryDrawer handleFilter={handleFilter} />
+        </div>
+      </div>
+      <TableContainer component={Paper}>
+        <Table aria-label="collapsible table">
+          <TableHead>
+            <TableRow>
+              <TableCell />
+              <TableCell>Developer Name</TableCell>
+              <TableCell align="right">Stack</TableCell>
+              <TableCell align="right">Experience (in years)</TableCell>
+              <TableCell align="right">Assigned to project</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {items.map((row) => (
+              <Row key={row.name} row={row} />
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 }
 export default CollapsibleTable;

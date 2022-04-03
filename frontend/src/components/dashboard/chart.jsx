@@ -15,26 +15,6 @@ const Chart = () => (
             ]}
           />
         </div>
-        <div className={css["custom-card"]} style={{ color: "white " }}>
-          <PieChart
-            label={({ dataEntry }) => `${Math.round(dataEntry.percentage)}%`}
-            data={[
-              { title: "One", value: 20, color: "lightblue" },
-              { title: "Two", value: 15, color: "orange" },
-              { title: "Three", value: 20, color: "lightgreen" },
-            ]}
-          />
-        </div>
-        <div className={css["custom-card"]} style={{ color: "white " }}>
-          <PieChart
-            label={({ dataEntry }) => `${Math.round(dataEntry.percentage)}%`}
-            data={[
-              { title: "One", value: 20, color: "lightblue" },
-              { title: "Two", value: 15, color: "orange" },
-              { title: "Three", value: 20, color: "lightgreen" },
-            ]}
-          />
-        </div>
         <div className={css["custom-card"]}>
           <div className={css["profile_name"]}>Employee numbers:</div>
         </div>

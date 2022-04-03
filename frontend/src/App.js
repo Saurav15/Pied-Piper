@@ -20,11 +20,6 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/" element={<SignIn />} />
-          {/* <Route path=":name" element={<ErrorPage />} /> */}
-          {/* <Route
-          path="/"
-          element={<SignUp INITIAL_VALUES={INITIAL_VALUES} />}
-        /> */}
           <Route element={<PrivateRoute />}></Route>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/project-details" element={<ProjectDetailsPage />} />

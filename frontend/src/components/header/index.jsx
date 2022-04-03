@@ -11,10 +11,15 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import { login } from "../../redux/userReducer";
 import LogoutIcon from "@mui/icons-material/Logout";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import "./index.css";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 export default function Header() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -37,7 +42,11 @@ export default function Header() {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
-
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+    dispatch(login(false));
+  };
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -57,7 +66,7 @@ export default function Header() {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
 
@@ -80,7 +89,7 @@ export default function Header() {
     >
       <MenuItem>
         <IconButton size="large" color="inherit">
-          <Badge badgeContent={4} color="error">
+          <Badge color="error">
             <AccountCircleIcon />
           </Badge>
         </IconButton>
@@ -88,7 +97,7 @@ export default function Header() {
       </MenuItem>
       <MenuItem>
         <IconButton size="large" color="inherit">
-          <Badge badgeContent={17} color="error">
+          <Badge color="error">
             <NotificationsIcon />
           </Badge>
         </IconButton>

@@ -15,6 +15,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/userReducer";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
+import axios from "axios";
 import logo from "../../assests/images/logo.png";
 const theme = createTheme();
 
@@ -62,18 +63,23 @@ export default function SignIn() {
               }}
               validationSchema={SignInSchema}
               onSubmit={(values) => {
-                console.log(values);
-                if (
-                  values.email === "hhh@gmail.com" &&
-                  values.password === "123456"
-                ) {
-                  dispatch(login(true));
-                  navigate("/dashboard");
-
-                  alert("Login Successful");
-                } else {
-                  alert("Please Enter Valid Email and Password");
-                }
+                axios
+                  .post("http://e8b4-14-99-102-226.ngrok.io/api/login", {
+                    values,
+                  })
+                  .then(function (response) {
+                    if (response.status === 200) {
+                      console.log(response);
+                      dispatch(login(true));
+                      localStorage.setItem("token", response.data.token);
+                      navigate("/dashboard");
+                    } else {
+                      alert("Please Enter Valid Email and Password");
+                    }
+                  })
+                  .catch(function (error) {
+                    console.log(error);
+                  });
               }}
             >
               {({ handleSubmit, errors, touched }) => {
