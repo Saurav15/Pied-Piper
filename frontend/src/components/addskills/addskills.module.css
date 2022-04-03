@@ -1,0 +1,24 @@
+.error {
+  color: red;
+}
+
+.reset {
+  margin-left: 15px;
+}
+
+.pic {
+  opacity: 0;
+  margin-left: -20%;
+}
+
+.upload {
+  margin-left: 100px;
+}
+
+.custom-btn {
+  background-color: lightblue;
+  color: white;
+}
+.custom-btn:hover {
+  color: white !important;
+}

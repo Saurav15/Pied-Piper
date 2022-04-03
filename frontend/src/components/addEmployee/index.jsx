@@ -4,6 +4,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import Header from "../header/index";
 import { SignUpSchema } from "../../validation/AddUserSchema";
 import "./addEmployee.css";
+import Footer from "../Footer";
 
 const AddEmployee = () => {
   return (
@@ -117,6 +118,7 @@ const AddEmployee = () => {
             </Formik>
           </Container>
         </div>
+        <Footer />
       </div>
     </>
   );

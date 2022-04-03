@@ -9,6 +9,7 @@ import AddEmployee from "./components/addEmployee";
 import MainEntry from "./components/MainEntryPoint/MainEntry";
 import EmployeeProfile from "./components/EmployeeProfile";
 import TeamLeaderProfile from "./components/TeamleaderProfile";
+import AddSkills from "./components/addskills/Addskills";
 function App() {
   return (
     // <div>
@@ -30,6 +31,7 @@ function App() {
           <Route path="/addEmployee" element={<AddEmployee />} />
           <Route path="/employeeProfile" element={<EmployeeProfile />} />
           <Route path="/teamleaderProfile" element={<TeamLeaderProfile />} />
+          <Route path="/addskills" element={<AddSkills />} />
         </Routes>
         {/* <Routes>
           <Route path="/" element={<SignIn />} />{" "}
